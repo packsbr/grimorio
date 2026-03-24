@@ -1,0 +1,15 @@
+PASTA DE IMAGENS — Como usar
+==============================
+
+Coloque aqui todas as imagens do site:
+
+  favicon.png         → ícone que aparece na aba do navegador (32x32px)
+  capa-og.jpg         → imagem de compartilhamento em redes sociais (1200x630px)
+  mockup-grimorio.png → imagem do produto (ex: capa do PDF)
+  foto-autora.jpg     → foto da autora (opcional)
+
+Para usar uma imagem no index.html, use o caminho:
+  <img src="images/nome-do-arquivo.jpg" alt="descrição" />
+
+Para usar como fundo no CSS:
+  background-image: url('../images/nome-do-arquivo.jpg');

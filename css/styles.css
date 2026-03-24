@@ -1,0 +1,635 @@
+/* =============================================
+   GRIMÓRIO DAS BRUXAS — Estilos Principais
+   Edite este arquivo para mudar cores, fontes,
+   tamanhos e layout de toda a página.
+   ============================================= */
+
+/* ---------- IMPORTAR FONTES ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* ---------- RESET BÁSICO ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- VARIÁVEIS DE COR — edite aqui ---------- */
+:root {
+  --cor-fundo:          #0d0618;
+  --cor-fundo-card:     rgba(45, 20, 70, 0.85);
+  --cor-roxo:           #7c3aed;
+  --cor-roxo-claro:     #a855f7;
+  --cor-dourado:        #d4a017;
+  --cor-dourado-claro:  #f9e48a;
+  --cor-texto:          #f0e6ff;
+  --cor-texto-suave:    rgba(220, 200, 255, 0.75);
+  --cor-verde-garantia: #22c55e;
+  --cor-borda:          rgba(147, 51, 234, 0.35);
+  --cor-borda-dourada:  rgba(212, 160, 23, 0.6);
+
+  --fonte-titulo: 'Cinzel', Georgia, serif;
+  --fonte-texto:  'Crimson Text', Georgia, serif;
+
+  --raio-borda: 16px;
+  --raio-borda-sm: 10px;
+  --sombra-roxa: 0 0 30px rgba(147, 51, 234, 0.25);
+}
+
+/* ---------- ESTILOS BASE ---------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fonte-texto);
+  font-size: 18px;
+  background-color: var(--cor-fundo);
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(120, 40, 200, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(200, 40, 120, 0.10) 0%, transparent 40%),
+    radial-gradient(ellipse at 60% 80%, rgba(40, 40, 200, 0.10) 0%, transparent 40%);
+  color: var(--cor-texto);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* ---------- CAMPO DE ESTRELAS ---------- */
+#campo-estrelas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.estrela {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  animation: piscar ease-in-out infinite;
+}
+
+/* ---------- BARRA DE URGÊNCIA ---------- */
+#barra-urgencia {
+  position: relative;
+  z-index: 10;
+  background: linear-gradient(90deg, #4c1d95, #6d28d9, #4c1d95);
+  padding: 10px 20px;
+  text-align: center;
+  border-bottom: 1px solid rgba(167, 85, 247, 0.4);
+}
+
+#barra-urgencia p {
+  color: #fde68a;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: var(--fonte-texto);
+}
+
+/* ---------- SECTIONS GERAIS ---------- */
+section {
+  position: relative;
+  z-index: 10;
+  padding: 80px 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.container-lg {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.texto-centro { text-align: center; }
+
+/* ---------- TIPOGRAFIA ---------- */
+h1, h2, h3 {
+  font-family: var(--fonte-titulo);
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 900;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.label-secao {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  color: var(--cor-roxo-claro);
+  margin-bottom: 14px;
+}
+
+.divisor {
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cor-dourado), transparent);
+  margin: 20px auto 50px;
+}
+
+/* ---------- TEXTO DOURADO BRILHANTE ---------- */
+.texto-dourado {
+  background: linear-gradient(90deg, #d4a017 0%, #f9e48a 30%, #d4a017 60%, #f9e48a 90%, #d4a017 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: brilho 3s linear infinite;
+}
+
+/* ---------- ÍCONE FLUTUANTE ---------- */
+.icone-flutuante {
+  font-size: 4rem;
+  display: inline-block;
+  animation: flutuar 4s ease-in-out infinite;
+}
+
+/* ---------- BADGE / PÍLULA ---------- */
+.badge {
+  display: inline-block;
+  background: rgba(109, 40, 217, 0.5);
+  border: 1px solid rgba(167, 85, 247, 0.45);
+  color: #d8b4fe;
+  font-size: 0.9rem;
+  padding: 8px 20px;
+  border-radius: 999px;
+  margin-bottom: 24px;
+}
+
+/* ---------- COUNTDOWN ---------- */
+#contador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 30px 0 12px;
+}
+
+.bloco-tempo {
+  text-align: center;
+}
+
+.numero-tempo {
+  font-family: 'Courier New', monospace;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fde68a;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(253, 230, 138, 0.3);
+  border-radius: 10px;
+  padding: 10px 16px;
+  min-width: 70px;
+  display: block;
+}
+
+.label-tempo {
+  font-size: 0.7rem;
+  color: rgba(253, 230, 138, 0.6);
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.separador-tempo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fde68a;
+  margin-bottom: 16px;
+}
+
+/* ---------- BOTÕES CTA ---------- */
+.btn-cta {
+  display: inline-block;
+  background: linear-gradient(135deg, #d4a017 0%, #f9e48a 50%, #d4a017 100%);
+  color: #1a0a2e;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 18px 40px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(212, 160, 23, 0.45);
+  animation: pulso-brilho 2s ease-in-out infinite;
+  text-align: center;
+}
+
+.btn-cta:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(212, 160, 23, 0.65);
+}
+
+.btn-basico {
+  display: inline-block;
+  background: transparent;
+  border: 2px solid rgba(167, 85, 247, 0.55);
+  color: #d8b4fe;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 17px 38px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.btn-basico:hover {
+  background: rgba(109, 40, 217, 0.3);
+  border-color: rgba(167, 85, 247, 0.85);
+}
+
+/* ---------- CARDS MÍSTICOS ---------- */
+.card-mistico {
+  background: var(--cor-fundo-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda);
+  padding: 28px;
+  backdrop-filter: blur(10px);
+}
+
+/* ---------- DORES / PROBLEMAS ---------- */
+.lista-dores {
+  list-style: none;
+}
+
+.lista-dores li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(147, 51, 234, 0.15);
+  font-size: 1.05rem;
+  color: var(--cor-texto-suave);
+}
+
+.lista-dores li:last-child { border-bottom: none; }
+
+.icone-dor  { color: #f87171; font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+.icone-check { color: #4ade80; font-size: 1.1rem; flex-shrink: 0; margin-top: 4px; }
+
+/* ---------- GRID DE BENEFÍCIOS ---------- */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card-beneficio {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.card-beneficio .emoji { font-size: 2rem; flex-shrink: 0; }
+
+.card-beneficio h3 { color: #fde68a; margin-bottom: 6px; }
+
+.card-beneficio p { color: var(--cor-texto-suave); font-size: 0.95rem; line-height: 1.6; }
+
+/* ---------- DEPOIMENTOS ---------- */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card-depoimento {
+  background: linear-gradient(135deg, rgba(40, 15, 60, 0.85), rgba(25, 10, 45, 0.9));
+  border: 1px solid rgba(147, 51, 234, 0.25);
+  border-radius: var(--raio-borda);
+  padding: 24px;
+  text-align: left;
+}
+
+.estrelas { color: #fbbf24; margin-bottom: 12px; font-size: 1rem; }
+
+.texto-depoimento {
+  color: rgba(220, 200, 255, 0.85);
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.nome-depoimento { color: #fde68a; font-weight: 600; font-size: 0.9rem; }
+.cidade-depoimento { color: rgba(167, 85, 247, 0.6); font-size: 0.8rem; }
+
+/* ---------- CARDS DE PREÇO ---------- */
+.grid-precos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.card-preco {
+  border-radius: 24px;
+  padding: 36px 32px;
+  text-align: left;
+  position: relative;
+}
+
+.card-basico {
+  background: linear-gradient(135deg, rgba(30, 20, 50, 0.92), rgba(20, 10, 40, 0.95));
+  border: 1px solid rgba(147, 51, 234, 0.4);
+}
+
+.card-premium {
+  background: linear-gradient(135deg, rgba(60, 15, 80, 0.92), rgba(40, 10, 65, 0.97));
+  border: 2px solid var(--cor-borda-dourada);
+  box-shadow: 0 0 40px rgba(147, 51, 234, 0.2), 0 0 70px rgba(212, 160, 23, 0.08);
+}
+
+.tag-popular {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #d4a017, #f9e48a, #d4a017);
+  color: #1a0a2e;
+  font-family: var(--fonte-titulo);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 20px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.label-plano {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 8px;
+}
+
+.label-plano.basico  { color: var(--cor-roxo-claro); }
+.label-plano.premium { color: var(--cor-dourado); }
+
+.nome-plano {
+  font-family: var(--fonte-titulo);
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.desc-plano {
+  color: var(--cor-texto-suave);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+.preco-riscado {
+  color: rgba(167, 85, 247, 0.55);
+  text-decoration: line-through;
+  font-size: 1rem;
+}
+
+.bloco-preco {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.preco-moeda { font-size: 1.2rem; color: var(--cor-dourado); margin-bottom: 8px; }
+.preco-valor { font-size: 4rem; font-family: var(--fonte-titulo); font-weight: 900; color: #fff; line-height: 1; }
+.preco-valor.dourado { color: var(--cor-dourado-claro); }
+.preco-centavos { font-size: 1.2rem; color: var(--cor-dourado); margin-bottom: 8px; }
+
+.desconto-badge {
+  color: #4ade80;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.lista-plano {
+  list-style: none;
+  margin-bottom: 24px;
+}
+
+.lista-plano li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 0.9rem;
+  color: rgba(220, 200, 255, 0.82);
+}
+
+/* Caixa de bônus extras */
+.box-bonus {
+  border: 1px solid rgba(212, 160, 23, 0.3);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+  background: rgba(212, 160, 23, 0.06);
+}
+
+.box-bonus .titulo-bonus {
+  color: var(--cor-dourado);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.box-bonus .item-bonus {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: rgba(220, 200, 255, 0.8);
+  padding: 4px 0;
+}
+
+.box-bonus .item-bonus strong { color: #fde68a; }
+
+.nota-preco {
+  text-align: center;
+  color: rgba(147, 51, 234, 0.5);
+  font-size: 0.78rem;
+  margin-top: 12px;
+}
+
+/* ---------- SELOS DE SEGURANÇA ---------- */
+.selos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 40px;
+  color: rgba(200, 180, 255, 0.65);
+  font-size: 0.9rem;
+}
+
+/* ---------- GARANTIA ---------- */
+.card-garantia {
+  background: linear-gradient(135deg, rgba(5, 46, 22, 0.8), rgba(2, 30, 14, 0.92));
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  border-radius: var(--raio-borda);
+  padding: 48px 40px;
+  text-align: center;
+}
+
+.card-garantia h2 { color: #86efac; margin-bottom: 20px; }
+.card-garantia p  { color: rgba(200, 240, 210, 0.82); line-height: 1.8; margin-bottom: 16px; }
+
+.pontos-garantia {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  color: #4ade80;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* ---------- PARA QUEM É ---------- */
+.lista-para-quem {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lista-para-quem li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--cor-fundo-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: 14px;
+  padding: 18px 22px;
+}
+
+.lista-para-quem .simbolo { color: var(--cor-dourado); font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+
+/* ---------- FAQ ---------- */
+.faq-item {
+  border-bottom: 1px solid rgba(147, 51, 234, 0.2);
+  overflow: hidden;
+}
+
+.faq-pergunta {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  background: var(--cor-fundo-card);
+  border: none;
+  padding: 20px 24px;
+  cursor: pointer;
+  color: #fde68a;
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.faq-pergunta:hover { background: rgba(255,255,255,0.04); }
+
+.faq-icone {
+  color: var(--cor-roxo-claro);
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.faq-resposta {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0 24px;
+  color: rgba(220, 200, 255, 0.8);
+  background: var(--cor-fundo-card);
+  line-height: 1.75;
+}
+
+.faq-item.aberto .faq-resposta {
+  max-height: 300px;
+  padding: 0 24px 22px;
+}
+
+.faq-item.aberto .faq-icone {
+  transform: rotate(45deg);
+}
+
+/* ---------- RODAPÉ ---------- */
+footer {
+  position: relative;
+  z-index: 10;
+  border-top: 1px solid rgba(109, 40, 217, 0.35);
+  padding: 50px 20px;
+  text-align: center;
+}
+
+footer .logo-footer { font-size: 2rem; margin-bottom: 12px; }
+footer p { color: rgba(167, 85, 247, 0.55); font-size: 0.85rem; margin-top: 8px; }
+
+/* ---------- ANIMAÇÕES ---------- */
+@keyframes piscar {
+  0%, 100% { opacity: 0.15; transform: scale(0.8); }
+  50%       { opacity: 1;    transform: scale(1.2); }
+}
+
+@keyframes flutuar {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-14px); }
+}
+
+@keyframes brilho {
+  from { background-position: 0% center; }
+  to   { background-position: 200% center; }
+}
+
+@keyframes pulso-brilho {
+  0%, 100% { box-shadow: 0 4px 20px rgba(212, 160, 23, 0.4); }
+  50%       { box-shadow: 0 4px 35px rgba(212, 160, 23, 0.75), 0 0 60px rgba(212, 160, 23, 0.25); }
+}
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 640px) {
+  section { padding: 60px 16px; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: 1fr; }
+  .grid-precos { grid-template-columns: 1fr; }
+  .pontos-garantia { flex-direction: column; align-items: center; gap: 10px; }
+  .selos { flex-direction: column; align-items: center; }
+  .btn-cta, .btn-basico { width: 100%; text-align: center; }
+  .bloco-preco .preco-valor { font-size: 3rem; }
+  #contador { gap: 6px; }
+  .numero-tempo { font-size: 1.7rem; padding: 8px 12px; min-width: 56px; }
+  h1 { font-size: 1.9rem; }
+}
